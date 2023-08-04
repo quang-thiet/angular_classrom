@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-3" *ngFor="let q of listQuestions">
+            <div class="card-header"><p class="fw-bold">{{ q.Text }}</p></div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item fw-bold" *ngFor="let a of q.Answers">{{ a.Text }} {{ q.AnswerId == a.id ? '(Đáp án)' : '' }}</li>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <a [routerLink]="'/admin/' + id + '/cau-hoi/edit/' + q.id" class="btn btn-primary mr-2">Sua</a>
+                <button class="btn btn-danger" (click)="deleteQuestion(id, q.id)">Xóa</button>
+            </div>
+        </div>
+    </div>
+    <a [routerLink]="'/admin/' + id + '/cau-hoi/add'" class="btn btn-primary btn-lg btn-block">Thêm câu hỏi</a>
+</div>

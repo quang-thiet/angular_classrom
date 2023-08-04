@@ -1,0 +1,11 @@
+<div class="row d-flex justify-content-between">
+    <div class="col-md-4" *ngFor="let s of listSubjects">
+        <div class="card mb-3" style="width: 100%;">
+            <img class="card-img-top" style="width:70%;aspect-ratio:1/1;object-fit:cover;display:block;margin:0 auto" [src]="'/assets/logo/'+s.Logo">
+            <div class="card-body">
+                <h5 class="card-title">{{ s.Name }}</h5>
+                <a [routerLink]="'/quiz/' + s.Code" class="btn btn-primary">Làm quiz</a>
+            </div>
+        </div>
+    </div>
+</div>

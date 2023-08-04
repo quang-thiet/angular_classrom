@@ -1,0 +1,12 @@
+<div class="card mb-3" *ngFor="let question of lstQuestions; index as i">
+    <div class="card-header">Câu hỏi {{(i+1)}}: {{ question.Text }}</div>
+    <div class="card-body">
+        <div class="form-check" *ngFor="let a of question.Answers">
+            <input class="form-check-input" (change)="selectAnswer(question.id, a.id)" type="radio" name="{{ question.id }}" id="ans_{{a.id}}">
+            <label class="form-check-label" for="ans_{{a.id}}">
+                {{ a.Text }}
+            </label>
+        </div>
+    </div>
+</div>
+<a (click)="submitExcercise()" class="btn btn-primary">Nộp bài</a>

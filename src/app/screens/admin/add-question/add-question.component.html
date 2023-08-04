@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">Them cau hoi</div>
+      <div class="card-body">
+        <form [formGroup]="question" (submit)="addQuestion()">
+          <div class="form-group">
+            <label>Cau hoi</label>
+            <input type="text" formControlName="text" class="form-control">
+          </div>
+          <hr>
+          <div formArrayName="answers" *ngFor="let a of answers.controls; index as i">
+            <div [formGroupName]="i">
+              <div class="form-group">
+                <label>Câu trả lời {{(i+1)}}</label>
+                <input type="text" formControlName="Text" class="form-control">
+                <div class="d-flex justify-content-between">
+                  <div class="form-check" [formGroup]="question">
+                    <input class="form-check-input" type="radio" formControlName="correct" [value]="i" name="correct" id="ans_{{i}}">
+                    <label class="form-check-label" for="ans_{{i}}">Đáp án
+                    </label>
+                  </div>
+                  <button (click)="removeAnswer(i)" class="btn">Xóa</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="btn btn-success" (click)="addAnswer()">Thêm câu hỏi</div>
+          <button class="btn btn-primary" type="submit">Lưu</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
